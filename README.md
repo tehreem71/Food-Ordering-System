@@ -1,7 +1,6 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is demo project Food Ordering System for Ruby on Rails internship
 
 Things you may want to cover:
 
