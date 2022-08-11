@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_08_11_081405) do
+ActiveRecord::Schema.define(version: 2022_08_11_090732) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,16 +41,28 @@ ActiveRecord::Schema.define(version: 2022_08_11_081405) do
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
   end
 
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "employees", force: :cascade do |t|
     t.string "frist_name"
     t.string "last_name"
     t.string "email"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "restaurant_id", null: false
-    t.bigint "manager_id"
-    t.index ["manager_id"], name: "index_employees_on_manager_id"
-    t.index ["restaurant_id"], name: "index_employees_on_restaurant_id"
+  end
+
+  create_table "menu_items", force: :cascade do |t|
+    t.string "name"
+    t.integer "price"
+    t.integer "quantity"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "category_id", null: false
+    t.index ["category_id"], name: "index_menu_items_on_category_id"
   end
 
   create_table "menus", force: :cascade do |t|
@@ -84,8 +96,7 @@ ActiveRecord::Schema.define(version: 2022_08_11_081405) do
     t.index ["admin_user_id"], name: "index_restaurants_on_admin_user_id"
   end
 
-  add_foreign_key "employees", "employees", column: "manager_id"
-  add_foreign_key "employees", "restaurants"
+  add_foreign_key "menu_items", "categories"
   add_foreign_key "menus", "restaurants"
   add_foreign_key "orders", "restaurants"
 end
