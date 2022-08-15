@@ -8,6 +8,19 @@ import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 
+//jQuery part
+var jQuery=require("jquery");
+
+global.$=global.jQuery= jQuery;
+window.$=window.jquery= jQuery;
+
+//import css
+import "../stylesheets/application.scss"
+//admin lte
+require('admin-lte')
+import "admin-lte/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min"
+import "@fortawesome/fontawesome-free/js/all.min"
+
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()

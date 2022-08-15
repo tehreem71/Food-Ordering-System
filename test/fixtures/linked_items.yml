@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  linkeditemable: one
+  linkeditemable_type: Linkeditemable
+  menu: one
+
+two:
+  linkeditemable: two
+  linkeditemable_type: Linkeditemable
+  menu: two
